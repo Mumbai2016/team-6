@@ -23,13 +23,13 @@
 				echo "usertype  ".$usertype;
 				if ($usertype == "1"){
 					$_SESSION['user_type'] = $usertype;
-					header("location:./UI/ui/index.php");
+					header("location:./UI/ui/index_1.php");
 				}else if($usertype == "2"){
 					$_SESSION['user_type'] = $usertype;
-					header("location:./UI/ui/index.php");
+					header("location:./UI/ui/index_2.php");
 				}else if ($usertype == "0"){
 					$_SESSION['user_type'] = $usertype;
-					header("location:./UI/ui/");
+					header("location:./UI/ui/index_0.php");
 				}
 			}
 		}else{
