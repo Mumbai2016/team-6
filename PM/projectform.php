@@ -2,22 +2,15 @@
 <head>
 <title>Project Details</title>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="../utils/css/bootstrap.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="../utils/js/bootstrap.min.js">
 
 
-<script>   
-    $(function() {
-         $( "#calendar" ).datepicker();   
-    }); 
-</script>
+
+
 
 
 <style>
@@ -40,7 +33,8 @@
 
 <div class="container">
   
-  <div class="table-responsive">          
+  <div class="table-responsive">    
+  
   <table class="table">
   
    
@@ -55,11 +49,11 @@
       </tr>
 	  <tr>
         <td>Start Date:</td>
-        <td> <label> <input type="text" id="calendar" /></label></td>
+        <td> <label> <input type="date" name="startdate" /></label></td>
       </tr>
 	   <tr>
         <td>End Date:</td>
-        <td> <label> <input type="text" id="calendar" /></label></td>
+        <td> <label> <input type="date" name="enddate" /></label></td>
       </tr>
 	  
     </tbody>
