@@ -31,9 +31,12 @@ update hours for the volunteer:
 
    foreach ($result as $key => $value) {
    		$hours_before=$value['hours'];
+   		$weeks_before = $value['weeks'];
    	}
-   $new_hours=$hours+$hours_before;	
+   $new_hours=$hours+$hours_before;
+   $new_weeks=$weeks_before+1;
    if(isset($_GET['submit'])){
-		mysqli_query($conn,"Update p_vol set hours=".$new_hours." p_uid=".$userid." and p_pid=".$projid);
+		mysqli_query($conn,"Update p_vol set hours=".$new_hours." where p_uid=".$userid." and p_pid=".$projid);
+		mysqli_query($conn,"Update p_vol set weeks=".$new_weeks." where p_uid=".$userid." and p_pid=".$projid);
 		echo "updated";
 	}
