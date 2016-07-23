@@ -56,33 +56,16 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
-                    </ul>
+                  <li><a><i class="fa fa-home"></i> Home </span></a>
+                    
                   </li>
-                  <li><a><i class="fa fa-edit"></i> PM INSERT <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                    </ul>
+                  <li><a href="form.php"><i class="fa fa-edit"></i> PM INSERT </span></a>
+                    
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> Survey <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                     
-                    </ul>
+                  <li><a><i class="fa fa-desktop"></i> Survey </span></a>
+                    
                   </li>
-                  <li><a><i class="fa fa-table"></i> Tracker <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html"></a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
-                      
-                    </ul>
-                  </li>
+                  
                  
                 </ul>
               </div>
