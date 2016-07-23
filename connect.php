@@ -8,6 +8,6 @@
 	// @$connect = mysql_connect($hostname,$username,$password) or die("Error Connecting"); //make connection
 	// mysql_select_db($dbname); //select database
 
-	$cxn = new mysqli_connect($hostname, $username, $password, $dbname);	
-	echo "con";
+	$cxn = new mysqli($hostname, $username, $password, $dbname);	
+	
 ?>

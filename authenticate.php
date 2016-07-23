@@ -10,9 +10,34 @@
 		extract($_POST);
 		print_r($_POST);
 		include 'connect.php';
-		$sql = "SELECT * FROM `user` WHERE 1";
-		$result = mysqli_query($cxn,$sql);
-		echo "as";
+		$sql = "SELECT * FROM `user` WHERE `uname`='$username' and `u_pwd` = '$password'";
+		$result = $cxn->query($sql);
+		echo $sql;
+		print_r($result);
+		if($result->num_rows > 0){
+
+			while ($row = $result->fetch_assoc()) {
+				# code...
+				$usertype = $row["u_type"];
+				print_r($row);
+				echo "usertype  ".$usertype;
+				if ($usertype == "1"){
+					$_SESSION['user_type'] = $usertype;
+					header("location:./UI/ui/index.php");
+				}else if($usertype == "2"){
+					$_SESSION['user_type'] = $usertype;
+					header("location:./UI/ui/index.php");
+				}else if ($usertype == "0"){
+					$_SESSION['user_type'] = $usertype;
+					header("location:./UI/ui/");
+				}
+			}
+		}else{
+			echo "problem";
+		}
+		$cxn->close();
+
+		
 	}
 
  ?>
