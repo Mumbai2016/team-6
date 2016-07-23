@@ -1,6 +1,7 @@
 <html>
 
   <head>
+
   	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
@@ -38,13 +39,16 @@
       
 
     </script>
+    <script type="text/javascript" src="../utils/libs/ajax_handler.js"></script>
+
   </head>
   <body>
+
   	<div id="accordion_element">
 		<!-- list all the n here,   -->
 			<h3>NGO 1</h3>
-			<div>
-				    <div id="timeline" style="height: 200px;"></div>
+			<div id="d_1">
+			    <!-- <div id="timeline" style="height: 200px;"></div> -->
 
 			</div>
 			
