@@ -11,20 +11,20 @@
     <title>USERNAME | </title>
 
     <!-- Bootstrap -->
-    <link href="../ui/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../UI/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../ui/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../UI/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../ui/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../UI/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../ui/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="../UI/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
-    <link href="../ui/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="../UI/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../ui/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="../UI/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
 
     <!-- Custom Theme Style -->
-    <link href="../ui/build/css/custom.min.css" rel="stylesheet">
+    <link href="../UI/build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -65,6 +65,12 @@
                   </li>
                   <li><a><i class="fa fa-desktop"></i> Survey </span></a>
                     
+                  </li>
+				  <li><a><i class="fa fa-book"></i> Reports <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="working_hours_reports.php">Working Hours Reports</a></li>
+                      
+                    </ul>
                   </li>
                   
                  
@@ -366,45 +372,45 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../ui/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../UI/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="../ui/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../UI/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../ui/vendors/fastclick/lib/fastclick.js"></script>
+    <script src="../UI/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../ui/vendors/nprogress/nprogress.js"></script>
+    <script src="../UI/vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="../ui/vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="../UI/vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../ui/vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="../UI/vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../ui/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="../UI/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../ui/vendors/iCheck/icheck.min.js"></script>
+    <script src="../UI/vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../ui/vendors/skycons/skycons.js"></script>
+    <script src="../UI/vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../ui/vendors/Flot/jquery.flot.js"></script>
-    <script src="../ui/vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../ui/vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../ui/vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../ui/vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="../UI/vendors/Flot/jquery.flot.js"></script>
+    <script src="../UI/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../UI/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../UI/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../UI/vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../ui/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../ui/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../ui/vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="../UI/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../UI/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../UI/vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../ui/vendors/DateJS/build/date.js"></script>
+    <script src="../UI/vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../ui/vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../ui/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../ui/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="../UI/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../UI/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../UI/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
     <script src="js/moment/moment.min.js"></script>
     <script src="js/datepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../ui/build/js/custom.min.js"></script>
+    <script src="../UI/build/js/custom.min.js"></script>
 
    
 
