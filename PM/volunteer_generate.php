@@ -25,6 +25,19 @@
 
     <!-- Custom Theme Style -->
     <link href="../UI/build/css/custom.min.css" rel="stylesheet">
+	<style>
+	th, td { padding: 15px; }
+
+/* cellspacing */
+table { border-collapse: separate; border-spacing: 15px; } /* cellspacing="5" */
+table { border-collapse: collapse; border-spacing: 0; }   /* cellspacing="0" */
+
+/* valign */
+th, td { vertical-align: top; }
+
+/* align (center) */
+table { margin: 10 auto; }
+</style>
   </head>
 
   <body class="nav-md">
@@ -206,6 +219,44 @@
           <br />
 			<?php
 			//take details of the volunteer from his volunteerid
+			$volunteer_id=$_POST['volunteerid'];
+			//echo $volunteer_id;
+			$sql_getname="select * from user where uid='$volunteer_id'";
+			$resname=mysql_query($sql_getname);
+			while($row=mysql_fetch_array($resname))
+			{
+				$volunteer_name=$row['uname'];
+			}
+			$sql_getname="select * from p_vol where p_uid='$volunteer_id'";
+			$resname=mysql_query($sql_getname);
+			while($row=mysql_fetch_array($resname))
+			{
+				$volunteer_hours=$row['hours'];
+				$volunteer_weeks=$row['weeks'];
+				$volunteer_p_pid=$row['p_pid'];
+			
+			}
+			$sql_uid="SELECT * FROM `projects` WHERE pid in (select p_pid from p_vol where p_uid=$volunteer_id)";
+			$resm=mysql_query($sql_uid);
+			//echo $resm;
+			$v_status=array(0,0,0);
+			while($row=mysql_fetch_array($resm))
+			{
+				
+				if($row['status']=='completed')
+				{
+					$v_status[0]+=1;
+				}
+				else if($row['status']=='ongoing')
+				{
+					$v_status[1]+=1;
+				}
+				else
+				{
+					$v_status[2]+=1;
+				}
+			}
+			
 			
 			?>
           <div class="row">
@@ -213,35 +264,48 @@
                 <div class="x_panel">
 				<div class="x_content">
                     <br />
-					<center><h1> Volunteer Report</h1></center>
+					<center><h1> Volunteer Report for <?php echo $volunteer_name;?></h1></center>
 					</br>
-                    <form id="volunteer-report-form" data-parsley-validate class="form-horizontal form-label-left" action="volunteer_generate.php">
-
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="volunteer-id">Select Volunteer <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                         <select class="form-control">
-						 <?php 
-						 $sql_volunteers="select * from user where u_type=2";
-						 $result=mysql_query($sql_volunteers);
-						 while($row=mysql_fetch_array($result))
-						 {
-							 echo '<option value="'.$row['uid'].'">'.$row['uname'].'</option>';
-						 }
-						 
-						?> 
-							
-							</select>
-                        </div>
-                      </div>
+                    <div class="table" style="font-size:20px">
+					<center><table>
+					<tr>
+						<td>Volunteer Name</td>
+						<td><?php echo $volunteer_name;?></td>
+					</tr>
+					<tr>
+						<td>Hours Worked</td>
+						<td><?php echo $volunteer_hours;?></td>
+					</tr>
+					<tr>
+						<td>Weeks Worked</td>
+						<td><?php echo $volunteer_weeks;?></td>
+					</tr>
+					<tr>
+						<td>Average Hours Worked Per Weeks</td>
+						<td><?php echo ($volunteer_hours/$volunteer_weeks);?></td>
+					</tr>
+					<tr>
+						<td>Projects Completed</td>
+						<td><?php echo $v_status[0];?></td>
+					</tr>
+					<tr>
+						<td>Projects Ongoing</td>
+						<td><?php echo $v_status[1];?></td>
+					</tr>
+					<tr>
+						<td>Projects Not Started</td>
+						<td><?php echo $v_status[2];?></td>
+					</tr>
+					</table></center>
+					</div>
+                      
                       
                       <div class="ln_solid"></div>
                       <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <center>
                           
                           <button type="submit" class="btn btn-success">Done</button>
-                        </div>
+                        </center>
                       </div>
 
                     </form>
