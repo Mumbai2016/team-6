@@ -23,7 +23,14 @@
     <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
 
     <!-- Custom Theme Style -->
+
     <link href="../build/css/custom.min.css" rel="stylesheet">
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <script type="text/javascript" src="../../utils/libs/select_handler.js"></script>
+
   </head>
 
   <body class="nav-md">
@@ -138,50 +145,7 @@
                         </span>
                       </a>
                     </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
+                    
                   </ul>
                 </li>
               </ul>
@@ -193,59 +157,48 @@
         <!-- page content -->
         <div class="right_col" role="main">
           <!-- top tiles -->
-         
-         <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                     
+                      
+            <!-- <link rel="stylesheet" href="../utils/css/bootstrap.css"> -->
 
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <div id="gender" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                            </label>
-                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="female"> Female
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">Cancel</button>
-                          <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                      </div>
 
-                    </form>
+            <!-- Latest compiled JavaScript -->
+            <!-- <link rel="stylesheet" href="../utils/js/bootstrap.min.js"> -->
+ 
+            <center>
+              
+              <form id="myform">
+                  <h1> PM INSERT FORM </h1>
+                     
+                    <?php
+                      include '../../connect.php';
+                      $sql = "SELECT * FROM `priority_areas` WHERE 1";
+                      $result = $cxn->query($sql);
+                      if($result->num_rows > 0){
+                      echo "<select id = 'select_pa'>";
+                      while($row = $result->fetch_assoc()){
+                        echo "<option id = $row[paid]>".$row["pname"]."</option>";
+                        
+                      }
+                      echo "</select>";
+                      }
+                    ?>
 
+                    <div id="enter_text_here"></div>
+
+
+                    <br><br>
+
+                    <input type="submit" class="btn btn-submit"/>
+
+              </form>
+              </center>
+              </div>
+
+            
+              
+
+            <!-- </center> -->
           <br />
 
       
