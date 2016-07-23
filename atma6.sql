@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.12
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2016 at 01:19 PM
--- Server version: 5.6.25
--- PHP Version: 5.5.27
+-- Generation Time: Jul 23, 2016 at 01:49 PM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `atma6`
@@ -23,82 +23,59 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `priority_areas`
+-- Table structure for table `activity`
+--
+-- Creation: Jul 23, 2016 at 11:47 AM
 --
 
-CREATE TABLE IF NOT EXISTS `priority_areas` (
-  `paid` int(11) NOT NULL,
-  `pname` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `activity` (
+`aid` int(11) NOT NULL,
+  `a_paid` int(11) NOT NULL,
+  `a_sid` int(11) NOT NULL,
+  `a_name` varchar(100) NOT NULL,
+  `a_y1` varchar(100) NOT NULL,
+  `a_y2` varchar(100) NOT NULL,
+  `a_y3` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `priority_areas`
+-- RELATIONS FOR TABLE `activity`:
+--   `a_paid`
+--       `priority_areas` -> `paid`
+--   `a_sid`
+--       `strategy_category` -> `sid`
 --
-
-INSERT INTO `priority_areas` (`paid`, `pname`) VALUES
-(1, 'Quality & Cost Efficiency'),
-(2, 'Successful Outcomes'),
-(3, 'External Recognition'),
-(4, 'Funding'),
-(5, 'Talent & Partner Acquisition and Retention');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `strategy_category`
---
-
-CREATE TABLE IF NOT EXISTS `strategy_category` (
-  `sid` int(11) NOT NULL,
-  `sname` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `strategy_category`
---
-
-INSERT INTO `strategy_category` (`sid`, `sname`) VALUES
-(1, 'Administration'),
-(2, 'Finance'),
-(3, 'Fundraising'),
-(4, 'Monitoring & Evaluation'),
-(5, 'Human Resources'),
-(6, 'Governance'),
-(7, 'Leadership'),
-(8, 'Strategy'),
-(9, 'Development'),
-(10, 'Programs and Marketing');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `priority_areas`
+-- Indexes for table `activity`
 --
-ALTER TABLE `priority_areas`
-  ADD PRIMARY KEY (`paid`);
-
---
--- Indexes for table `strategy_category`
---
-ALTER TABLE `strategy_category`
-  ADD PRIMARY KEY (`sid`);
+ALTER TABLE `activity`
+ ADD PRIMARY KEY (`aid`), ADD KEY `a_paid_idx` (`a_paid`), ADD KEY `fk_sid_idx` (`a_sid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `priority_areas`
+-- AUTO_INCREMENT for table `activity`
 --
-ALTER TABLE `priority_areas`
-  MODIFY `paid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+ALTER TABLE `activity`
+MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `strategy_category`
+-- Constraints for dumped tables
 --
-ALTER TABLE `strategy_category`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+
+--
+-- Constraints for table `activity`
+--
+ALTER TABLE `activity`
+ADD CONSTRAINT `fk_paid` FOREIGN KEY (`a_paid`) REFERENCES `priority_areas` (`paid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_sid` FOREIGN KEY (`a_sid`) REFERENCES `strategy_category` (`sid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
