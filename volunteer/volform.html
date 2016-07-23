@@ -15,7 +15,12 @@
 .table th,td {
    text-align: center;   
 }
-h2 { text-align: center;   }
+
+.table {
+ margin-top: 40px;
+}
+
+h2,p { text-align: center;   }
 
 </style>
 
@@ -24,32 +29,27 @@ h2 { text-align: center;   }
 <body>
 
 <div class="container">
-  <h2>Pending Tasks</h2>
+  <h2>Hello XYZ!</h2>
   <div class="table-responsive">          
   <table class="table">
   
     <thead>
       <tr>
-     <th>Task Name</th>
+     <th>Ongoing</th>
         <th>Completed</th>
          </tr>
     </thead>
     <tbody>
       <tr>
-        <td>SOP</td>
-        <td> <label><input type="checkbox"></label></td>
+        <td>SOP     <button type="button" class="btn btn-success">Done!</button></td>
+        <td>Marketing </td>
       </tr>
-	  <tr>
-        <td>Teaching workshop</td>
-        <td> <label><input type="checkbox"></label></td>
-      </tr>
-	  <tr>
-        <td>Sponsor Seminar</td>
-        <td> <label><input type="checkbox"></label></td>
-      </tr>
+	 
+	  </tr>
     </tbody>
 	
   </table>
+ 
   </div>
 </div>
 

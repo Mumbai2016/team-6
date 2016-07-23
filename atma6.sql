@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jul 23, 2016 at 07:59 PM
--- Server version: 5.5.50-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.17
+-- Host: 127.0.0.1
+-- Generation Time: Jul 23, 2016 at 10:59 PM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -20,6 +20,38 @@ SET time_zone = "+00:00";
 -- Database: `atma6`
 --
 
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ngo_percent_complete`(
+in ngoid int,
+out percent float
+)
+BEGIN
+declare total int;
+declare num int;
+select count(*) into total from projects where ngo_id=ngoid;
+select count(*) into num from projects where ngo_id=ngoid and status like '%complete%';
+set percent = (num/total) * 100;
+END$$
+
+--
+-- Functions
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `ngo_percent_complete`(ngoid int) RETURNS int(11)
+BEGIN
+declare total int;
+declare count int;
+declare percent float;
+select count(*) into total from projects where ngo_id=ngoid;
+select count(*) into count from projects where ngo_id=ngoid and status like '%complete%';
+set percent = (count / total) * 100;
+RETURN percent;
+END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -27,15 +59,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `activity` (
-  `aid` int(11) NOT NULL AUTO_INCREMENT,
+`aid` int(11) NOT NULL,
   `a_paid` int(11) NOT NULL,
   `a_sid` int(11) NOT NULL,
   `a_name` varchar(100) NOT NULL,
-  `a_funds` int(11) DEFAULT NULL,
-  PRIMARY KEY (`aid`),
-  KEY `a_paid_idx` (`a_paid`),
-  KEY `fk_sid_idx` (`a_sid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `a_funds` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS FOR TABLE `activity`:
@@ -72,12 +101,10 @@ INSERT INTO `activity` (`aid`, `a_paid`, `a_sid`, `a_name`, `a_funds`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `interests` (
-  `i_id` int(11) NOT NULL AUTO_INCREMENT,
+`i_id` int(11) NOT NULL,
   `i_uid` int(11) DEFAULT NULL,
-  `i_interest` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`i_id`),
-  KEY `fk_uid_idx` (`i_uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `i_interest` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS FOR TABLE `interests`:
@@ -106,13 +133,11 @@ INSERT INTO `interests` (`i_id`, `i_uid`, `i_interest`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `ngo` (
-  `ngo_id` int(11) NOT NULL AUTO_INCREMENT,
+`ngo_id` int(11) NOT NULL,
   `ngo_add` varchar(250) DEFAULT NULL,
   `ngo_name` varchar(100) DEFAULT NULL,
-  `pm_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ngo_id`),
-  KEY `fk_pm_id_idx` (`pm_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `pm_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS FOR TABLE `ngo`:
@@ -141,10 +166,9 @@ INSERT INTO `ngo` (`ngo_id`, `ngo_add`, `ngo_name`, `pm_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `od` (
-  `odid` int(11) NOT NULL AUTO_INCREMENT,
-  `od_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`odid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+`odid` int(11) NOT NULL,
+  `od_name` varchar(45) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `od`
@@ -169,10 +193,9 @@ INSERT INTO `od` (`odid`, `od_name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `priority_areas` (
-  `paid` int(11) NOT NULL AUTO_INCREMENT,
-  `pname` varchar(100) NOT NULL,
-  PRIMARY KEY (`paid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+`paid` int(11) NOT NULL,
+  `pname` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `priority_areas`
@@ -192,7 +215,7 @@ INSERT INTO `priority_areas` (`paid`, `pname`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `projects` (
-  `pid` int(11) NOT NULL AUTO_INCREMENT,
+`pid` int(11) NOT NULL,
   `aid` int(11) DEFAULT NULL,
   `ngo_id` int(11) DEFAULT NULL,
   `p_name` varchar(45) DEFAULT NULL,
@@ -202,12 +225,8 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `e_date` date DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
   `is_approved` int(11) NOT NULL,
-  `odid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`pid`),
-  KEY `fk_aid_idx` (`aid`),
-  KEY `fk_ngoid_idx` (`ngo_id`),
-  KEY `fk_odid_idx` (`odid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `odid` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS FOR TABLE `projects`:
@@ -246,17 +265,13 @@ INSERT INTO `projects` (`pid`, `aid`, `ngo_id`, `p_name`, `target_s_date`, `targ
 --
 
 CREATE TABLE IF NOT EXISTS `p_vol` (
-  `p_vol_id` int(11) NOT NULL AUTO_INCREMENT,
+`p_vol_id` int(11) NOT NULL,
   `hours` int(11) DEFAULT NULL,
   `weeks` int(11) NOT NULL,
   `p_uid` int(11) DEFAULT NULL,
   `p_pid` int(11) NOT NULL,
-  `ngo_id` int(11) NOT NULL,
-  PRIMARY KEY (`p_vol_id`,`p_pid`),
-  KEY `fk_ppid_idx` (`p_pid`),
-  KEY `fk_puid_idx` (`p_uid`),
-  KEY `ngo_id` (`ngo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+  `ngo_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS FOR TABLE `p_vol`:
@@ -288,10 +303,9 @@ INSERT INTO `p_vol` (`p_vol_id`, `hours`, `weeks`, `p_uid`, `p_pid`, `ngo_id`) V
 --
 
 CREATE TABLE IF NOT EXISTS `strategy_category` (
-  `sid` int(11) NOT NULL AUTO_INCREMENT,
-  `sname` varchar(100) NOT NULL,
-  PRIMARY KEY (`sid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+`sid` int(11) NOT NULL,
+  `sname` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `strategy_category`
@@ -320,16 +334,14 @@ INSERT INTO `strategy_category` (`sid`, `sname`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
+`uid` int(11) NOT NULL,
   `uname` varchar(20) DEFAULT NULL,
   `u_pwd` varchar(50) NOT NULL,
   `u_type` int(11) DEFAULT NULL,
   `name` varchar(125) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`uid`),
-  KEY `fk_utype_idx` (`u_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `email` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS FOR TABLE `user`:
@@ -357,8 +369,7 @@ INSERT INTO `user` (`uid`, `uname`, `u_pwd`, `u_type`, `name`, `address`, `email
 
 CREATE TABLE IF NOT EXISTS `user_type` (
   `u_type` int(11) NOT NULL,
-  `u_type_name` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`u_type`)
+  `u_type_name` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -371,6 +382,119 @@ INSERT INTO `user_type` (`u_type`, `u_type_name`) VALUES
 (2, 'Volunteer');
 
 --
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `activity`
+--
+ALTER TABLE `activity`
+ ADD PRIMARY KEY (`aid`), ADD KEY `a_paid_idx` (`a_paid`), ADD KEY `fk_sid_idx` (`a_sid`);
+
+--
+-- Indexes for table `interests`
+--
+ALTER TABLE `interests`
+ ADD PRIMARY KEY (`i_id`), ADD KEY `fk_uid_idx` (`i_uid`);
+
+--
+-- Indexes for table `ngo`
+--
+ALTER TABLE `ngo`
+ ADD PRIMARY KEY (`ngo_id`), ADD KEY `fk_pm_id_idx` (`pm_id`);
+
+--
+-- Indexes for table `od`
+--
+ALTER TABLE `od`
+ ADD PRIMARY KEY (`odid`);
+
+--
+-- Indexes for table `priority_areas`
+--
+ALTER TABLE `priority_areas`
+ ADD PRIMARY KEY (`paid`);
+
+--
+-- Indexes for table `projects`
+--
+ALTER TABLE `projects`
+ ADD PRIMARY KEY (`pid`), ADD KEY `fk_aid_idx` (`aid`), ADD KEY `fk_ngoid_idx` (`ngo_id`), ADD KEY `fk_odid_idx` (`odid`);
+
+--
+-- Indexes for table `p_vol`
+--
+ALTER TABLE `p_vol`
+ ADD PRIMARY KEY (`p_vol_id`,`p_pid`), ADD KEY `fk_ppid_idx` (`p_pid`), ADD KEY `fk_puid_idx` (`p_uid`), ADD KEY `ngo_id` (`ngo_id`);
+
+--
+-- Indexes for table `strategy_category`
+--
+ALTER TABLE `strategy_category`
+ ADD PRIMARY KEY (`sid`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+ ADD PRIMARY KEY (`uid`), ADD KEY `fk_utype_idx` (`u_type`);
+
+--
+-- Indexes for table `user_type`
+--
+ALTER TABLE `user_type`
+ ADD PRIMARY KEY (`u_type`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `activity`
+--
+ALTER TABLE `activity`
+MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `interests`
+--
+ALTER TABLE `interests`
+MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `ngo`
+--
+ALTER TABLE `ngo`
+MODIFY `ngo_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `od`
+--
+ALTER TABLE `od`
+MODIFY `odid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `priority_areas`
+--
+ALTER TABLE `priority_areas`
+MODIFY `paid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `projects`
+--
+ALTER TABLE `projects`
+MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `p_vol`
+--
+ALTER TABLE `p_vol`
+MODIFY `p_vol_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+--
+-- AUTO_INCREMENT for table `strategy_category`
+--
+ALTER TABLE `strategy_category`
+MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
 -- Constraints for dumped tables
 --
 
@@ -378,42 +502,42 @@ INSERT INTO `user_type` (`u_type`, `u_type_name`) VALUES
 -- Constraints for table `activity`
 --
 ALTER TABLE `activity`
-  ADD CONSTRAINT `fk_paid` FOREIGN KEY (`a_paid`) REFERENCES `priority_areas` (`paid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_sid` FOREIGN KEY (`a_sid`) REFERENCES `strategy_category` (`sid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_paid` FOREIGN KEY (`a_paid`) REFERENCES `priority_areas` (`paid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_sid` FOREIGN KEY (`a_sid`) REFERENCES `strategy_category` (`sid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `interests`
 --
 ALTER TABLE `interests`
-  ADD CONSTRAINT `fk_int_uid` FOREIGN KEY (`i_uid`) REFERENCES `user` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_int_uid` FOREIGN KEY (`i_uid`) REFERENCES `user` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `ngo`
 --
 ALTER TABLE `ngo`
-  ADD CONSTRAINT `fk_pm_id` FOREIGN KEY (`pm_id`) REFERENCES `user` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_pm_id` FOREIGN KEY (`pm_id`) REFERENCES `user` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `projects`
 --
 ALTER TABLE `projects`
-  ADD CONSTRAINT `fk_aid` FOREIGN KEY (`aid`) REFERENCES `activity` (`aid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_ngoid` FOREIGN KEY (`ngo_id`) REFERENCES `ngo` (`ngo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_odid` FOREIGN KEY (`odid`) REFERENCES `od` (`odid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_aid` FOREIGN KEY (`aid`) REFERENCES `activity` (`aid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_ngoid` FOREIGN KEY (`ngo_id`) REFERENCES `ngo` (`ngo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_odid` FOREIGN KEY (`odid`) REFERENCES `od` (`odid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `p_vol`
 --
 ALTER TABLE `p_vol`
-  ADD CONSTRAINT `fk_ppid` FOREIGN KEY (`p_pid`) REFERENCES `projects` (`pid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_puid` FOREIGN KEY (`p_uid`) REFERENCES `user` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `p_vol_ibfk_1` FOREIGN KEY (`ngo_id`) REFERENCES `ngo` (`ngo_id`);
+ADD CONSTRAINT `fk_ppid` FOREIGN KEY (`p_pid`) REFERENCES `projects` (`pid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_puid` FOREIGN KEY (`p_uid`) REFERENCES `user` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `p_vol_ibfk_1` FOREIGN KEY (`ngo_id`) REFERENCES `ngo` (`ngo_id`);
 
 --
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `fk_utype` FOREIGN KEY (`u_type`) REFERENCES `user_type` (`u_type`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_utype` FOREIGN KEY (`u_type`) REFERENCES `user_type` (`u_type`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
