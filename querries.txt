@@ -1,0 +1,39 @@
+connectivity:
+ 
+   $dbhost = 'localhost';
+   $dbuser = 'root';
+   $dbpass = '';
+   $projid = 0;
+   $conn = mysqli_connect($dbhost, $dbuser, $dbpass,'atma6');
+   if(! $conn )
+   {
+     die('Could not connect: ' . mysqli_error($conn));
+   }
+   echo 'Connected successfully';
+
+
+list projects in a drop down box:
+
+   $result= mysqli_query($conn,"SELECT p_pid FROM p_vol where p_uid=".$userid); //$userid is userid of volunteer
+   echo "<br> <select>";
+
+   foreach ($result as $key => $value) {
+   $result1= mysqli_query($conn,"SELECT * FROM projects where pid=".$value['p_pid']);
+   foreach ($result1 as $key => $value) {
+   		echo "<option value=".$value['pid'].">".$value['p_name']."</option>";   		
+   		}
+   }
+   echo "</select><br>";
+
+update hours for the volunteer:
+ 
+   $result= mysqli_query($conn,"SELECT * FROM p_vol where p_uid=".$userid." and p_pid=1".$projid);  /*$userid is volunteer's userid,       $projid is the project for which the volunteer wants to update the hours for */
+
+   foreach ($result as $key => $value) {
+   		$hours_before=$value['hours'];
+   	}
+   $new_hours=$hours+$hours_before;	
+   if(isset($_GET['submit'])){
+		mysqli_query($conn,"Update p_vol set hours=".$new_hours." p_uid=".$userid." and p_pid=".$projid);
+		echo "updated";
+	}
