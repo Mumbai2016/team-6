@@ -1,3 +1,7 @@
+var mainarray = [];
+
+
+
 $(document).on("change", "#select_pa", function(e){
 	var n = prompt("Enter the number of strategies");
 	console.log("value changed");
@@ -10,7 +14,7 @@ $(document).on("change", "#select_pa", function(e){
 			$(element).append('<input type="text" placeholder="Enter Strategy"> &nbsp;');
 			// $(element).append('<button class="btn btn-default" type="button"></button>');
 			$(element).append('<input type="button" name=button_'+String($i)+' value="GO!" class="btn btn-default" onclick="process_activity(this);">');
-			var t = "_strategy_"+String($i);
+			var t = "AA_strategy_"+String($i);
 			$(element).append("<div id="+t+"></div>");
                           
 			$(element).append("<br>");
@@ -30,7 +34,7 @@ function process_activity(x){
 	if (n!= null){
 		var y = x.name.split("_",-1)[1];
 		console.log(y);
-		var element = $("#_strategy_"+String(y));
+		var element = $("#AA_strategy_"+String(y));
 		for ($i=0;$i<n;$i++){
 			console.log("here");
 			$(element).append("<br>");
@@ -38,9 +42,10 @@ function process_activity(x){
 			var name_button = y + "_button_" + String($i);
 			console.log("name of activity input " + name);
 			console.log("name of activity button " + name_button);
-			$(element).append('<input type="text" name='+name+' placeholder="Enter Activity"> &nbsp;');
+			$(element).append('<input type="text" name=AA_'+name+' placeholder="Enter Activity"> &nbsp;');
+			$(element).append('<input type="number" name=AA_'+name+'_number placeholder="Enter Amout"> &nbsp;');
 			// $(element).append('<button class="btn btn-default" type="button"></button>');
-			$(element).append('<input type="button" name='+name_button+' id='+name_button+'   value="GO!" class="btn btn-default" onclick="process_projects(this);">');
+			$(element).append('<input type="button" name=AA_'+name_button+' id=AA_'+name_button+'   value="GO!" class="btn btn-default" onclick="process_projects(this);">');
                           
 			$(element).append("<br>");			
 		}
@@ -63,7 +68,13 @@ function process_projects(x){
 			$(element).parent().append("<br>");
 			var name = "_project_" + String($i);
 			// debugger(name);
-			$(element).parent().append('<input type="text" name='+name+' placeholder="Enter Project"> &nbsp;');
+			$otd_form = "<input type='text' name=AA_"+name+"_projectname placeholder='Enter the project name' >  &nbsp;&nbsp; \
+				<input type='number' name=AA_"+name+"_projectOD placeholder='Enter project OD'> \
+				<input type='date' name=AA_"+name+"projectDATESTART />	\
+				<input type='date' name=AA_"+name+"projectDATEEND />	\
+			";
+			// $(element).parent().append('<input type="text" name='+name+' placeholder="Enter Project"> &nbsp;');
+			$(element).parent().append($otd_form);
 			$(element).parent().append("<br>");			
 
 
@@ -71,3 +82,13 @@ function process_projects(x){
 	}
 
 }
+
+
+function submitform(event){
+	$("#myform").children().each(function(){
+		console.log(this);
+	});
+	event.preventDefault();
+}
+
+
