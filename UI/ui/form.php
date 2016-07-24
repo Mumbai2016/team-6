@@ -63,7 +63,7 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home </span></a>
+                  <li><a href="../../PM/"><i class="fa fa-home"></i> Home </span></a>
                     
                   </li>
                   <li><a href="form.php"><i class="fa fa-edit"></i> PM INSERT </span></a>
@@ -166,16 +166,16 @@
             <!-- <link rel="stylesheet" href="../utils/js/bootstrap.min.js"> -->
  
             <center>
-              
-              <form id="myform">
+
+              <form id="myform" action="../../PM/insert_activities.php" method="POST">
                   <h1> PM INSERT FORM </h1>
                      
                     <?php
-                      include '../../connect.php';
+                      include '../../connect_k.php';
                       $sql = "SELECT * FROM `priority_areas` WHERE 1";
                       $result = $cxn->query($sql);
                       if($result->num_rows > 0){
-                      echo "<select id = 'select_pa'>";
+                      echo "<select id = 'select_pa' name='p_a'>";
                       while($row = $result->fetch_assoc()){
                         echo "<option id = $row[paid]>".$row["pname"]."</option>";
                         

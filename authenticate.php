@@ -9,7 +9,7 @@
 		# code...
 		extract($_POST);
 		print_r($_POST);
-		include 'connect.php';
+		include 'connect_k.php';
 		$sql = "SELECT * FROM `user` WHERE `uname`='$username' and `u_pwd` = '$password'";
 		$result = $cxn->query($sql);
 		echo $sql;

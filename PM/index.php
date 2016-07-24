@@ -25,6 +25,10 @@
 
     <!-- Custom Theme Style -->
     <link href="../UI/build/css/custom.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <script type="text/javascript" src="add_hours.js"></script>
   </head>
 
   <body class="nav-md">
@@ -60,10 +64,14 @@
                   <li><a><i class="fa fa-home"></i> Home </span></a>
                     
                   </li>
-                  <li><a href="insert_activities.php"><i class="fa fa-edit"></i> PM INSERT </span></a>
+                  <li><a href="../UI/ui/form.php"><i class="fa fa-edit"></i> PM INSERT </span></a>
                     
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> Survey </span></a>
+                  <li><a ><i class="fa fa-desktop"></i> Survey </span></a>
+                    
+                  </li>
+                  <!-- Button trigger modal -->
+                  <li><a href='#' data-toggle='modal' data-target='#myModal'><i class="fa fa-clock-o"></i> Update Hours </span></a>
                     
                   </li>
 				  <li><a><i class="fa fa-book"></i> Reports <span class="fa fa-chevron-down"></span></a>
@@ -227,9 +235,9 @@
               <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-              <div class="count">7,325</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i> Total time by PM</span>
+              <div class="count">35</div>
+              <span class="count_bottom"><i class="green">--</i> ---- </span>
             </div>
           </div>
           <!-- /top tiles -->
@@ -305,19 +313,19 @@
 							?>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square blue"></i>Completed </p>
+                              <p><i class="fa fa-square gray"></i>Completed </p>
                             </td>
                             <td><?php echo $status[0];?></td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square green"></i>Ongoing </p>
+                              <p><i class="fa fa-square purple"></i>Ongoing </p>
                             </td>
                             <td><?php echo $status[1];?></td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square purple"></i>Not Started </p>
+                              <p><i class="fa fa-square red"></i>Not Started </p>
                             </td>
                             <td><?php echo $status[2];?></td>
                           </tr>
@@ -484,5 +492,34 @@
       gauge.setTextField(document.getElementById("gauge-text"));
     </script>
     <!-- /gauge.js -->
+
+
+   
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Up your Hours</h4>
+      </div>
+      <div class="modal-body">
+        <form id="modelform" action="fetch.php" method="POST">
+          <div class='form-group'>
+            <!-- <p>Enter input hours</p> -->
+            <input class='form-control' name="added_hours"  type="number" placeholder="Enter input hours" ></input>
+          </div>
+          <input class="form-control btn btn-default" type="submit"></input>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+        <!-- <button type="button" class="btn btn-default">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
   </body>
 </html>
