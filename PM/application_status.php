@@ -10,24 +10,24 @@
     <title>USERNAME1 | </title>
 
     <!-- Bootstrap -->
-    <link href="../ui/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../UI//vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../ui/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../UI//vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../ui/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../UI//vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../ui/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="../UI//vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
-    <link href="../ui/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <link href="../UI//vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
     <!-- Select2 -->
-    <link href="../ui/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
-    <!-- Switchery -->
-    <link href="../ui/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <link href="../UI//vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery --UI/>
+    <link href="../UI/ui/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
     <!-- starrr -->
-    <link href="../ui/vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <link href="../UI//vendors/starrr/dist/starrr.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../ui/build/css/custom.min.css" rel="stylesheet">
+    <link href="../UI//build/css/custom.min.css" rel="stylesheet">
 	<style>
 	th, td { padding: 15px; }
 
@@ -292,41 +292,41 @@ table { margin: 10 auto; }
     </div>
 
     <!-- jQuery -->
-    <script src="../ui/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../UI/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="../ui/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../UIvendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../ui/vendors/fastclick/lib/fastclick.js"></script>
+    <script src="../UIvendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../ui/vendors/nprogress/nprogress.js"></script>
+    <script src="../UIvendors/nprogress/nprogress.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../ui/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="../UIvendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../ui/vendors/iCheck/icheck.min.js"></script>
+    <script src="../UIvendors/iCheck/icheck.min.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="js/moment/moment.min.js"></script>
-    <script src="js/datepicker/daterangepicker.js"></script>
+    <script src="../UI/ui/js/moment/moment.min.js"></script>
+    <script src="../UI/ui/js/datepicker/daterangepicker.js"></script>
     <!-- bootstrap-wysiwyg -->
-    <script src="../ui/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
-    <script src="../ui/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
-    <script src="../ui/vendors/google-code-prettify/src/prettify.js"></script>
+    <script src="../UI/ui/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="../UI/ui/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="../UI/ui/vendors/google-code-prettify/src/prettify.js"></script>
     <!-- jQuery Tags Input -->
-    <script src="../ui/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <script src="../UI/ui/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
     <!-- Switchery -->
-    <script src="../ui/vendors/switchery/dist/switchery.min.js"></script>
+    <script src="../UI/ui/vendors/switchery/dist/switchery.min.js"></script>
     <!-- Select2 -->
-    <script src="../ui/vendors/select2/dist/js/select2.full.min.js"></script>
+    <script src="../UI/ui/vendors/select2/dist/js/select2.full.min.js"></script>
     <!-- Parsley -->
-    <script src="../ui/vendors/parsleyjs/dist/parsley.min.js"></script>
+    <script src="../UI/ui/vendors/parsleyjs/dist/parsley.min.js"></script>
     <!-- Autosize -->
     <script src="../ui/vendors/autosize/dist/autosize.min.js"></script>
     <!-- jQuery autocomplete -->
-    <script src="../ui/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <script src="../UI/ui/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
     <!-- starrr -->
-    <script src="../ui/vendors/starrr/dist/starrr.js"></script>
+    <script src="../UI/ui/vendors/starrr/dist/starrr.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../ui/build/js/custom.min.js"></script>
+    <script src="../UI/ui/build/js/custom.min.js"></script>
 
     <!-- bootstrap-daterangepicker -->
     

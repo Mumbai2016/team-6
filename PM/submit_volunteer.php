@@ -18,7 +18,7 @@ $duration=$_POST['duration'];
 $bachelors=$_POST['option'];
 $sql="INSERT INTO `atma6`.`form` (`name`, `country`, `birth`, `duration`, `bachelors`,app_status) VALUES ('$name', '$country', '$date', '$duration', '$bachelors',1)";
 mysql_query($sql);
-header('Location:../UI/ui');
+header('Location:./');
 ?>
 Values Inserted
 </body>

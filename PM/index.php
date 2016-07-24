@@ -81,11 +81,19 @@ session_start();
                   <li><a href='#' data-toggle='modal' data-target='#myModal1'><i class="fa fa-clock-o"></i> Update Hours </span></a>
                     
                   </li>
-          <li><a><i class="fa fa-book"></i> Reports <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-book"></i> Reports <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="volunteer_reports.php">For Volunteers</a></li>
                       
                     </ul>
+                  </li>
+                  </li>
+                  <li><a href="application_status.php"><i class="fa fa-time-o"></i>Volunteer Applications  </span></a>
+                    
+                  </li>
+
+                  <li><a href="edit_status.php"><i class="fa fa-time-o"></i>Edit Status  </span></a>
+                    
                   </li>
                   
                  
