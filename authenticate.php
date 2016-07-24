@@ -1,12 +1,6 @@
-
-<?php 
-
-	// this file is only for authentivction purposes
-	// 
-	// 
-	// 
-	// 
-	if(isset($_POST['submit'])) {
+<?php session_start();
+if(isset($_POST['submit'])) {
+        
 		# code...
 		extract($_POST);
 		print_r($_POST);
