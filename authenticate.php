@@ -1,12 +1,6 @@
-
-<?php 
-
-	// this file is only for authentivction purposes
-	// 
-	// 
-	// 
-	// 
-	if(isset($_POST['submit'])) {
+<?php session_start();
+if(isset($_POST['submit'])) {
+        
 		# code...
 		extract($_POST);
 		print_r($_POST);
@@ -28,20 +22,24 @@
 			while ($row = $result->fetch_assoc()) {
 				# code...
 				$usertype = $row["u_type"];
+				$userid = $row["userid"];
 				//print_r($row);
 				echo "usertype  ".$usertype;
 				$_SESSION['userid']= $row['uid'];
 				if ($usertype == 1){
 				echo '1';
 					$_SESSION['user_type'] = $usertype;
-
 					header("location:./PM/index.php");
 				}else if($usertype == 2){
 					echo '2';
 					$_SESSION['user_type'] = $usertype;
+                    $userid = $row["userid"];
+                    $_SESSION['userid'] = $userid;
 					header("location:./UI/ui/index_2.php");
 				}else if ($usertype == 0){
 						echo '0';
+                    $userid = $row["userid"];
+                    $_SESSION['userid'] = $userid;
 					$_SESSION['user_type'] = $usertype;
 					header("location:./UI/ui/index_0.php");
 				}
