@@ -2,7 +2,7 @@
 <?php
 
 session_start();
-print_r($_SESSION);
+<!-- print_r($_SESSION); -->
  include '../connect.php';?>
 <html lang="en">
   <head>
