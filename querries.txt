@@ -53,3 +53,15 @@ count of completed projects ngo-wise for a specific pm:
    		}
    		$count = 0;
    }
+
+list of projects worked on by volunteers:
+
+  $result= mysqli_query($conn,"SELECT p_pid FROM p_vol WHERE p_uid =".$uid);//$pm_id is uid of a volunteer
+
+   foreach ($result as $key => $value) {
+   		$result1 = mysqli_query($conn,"SELECT p_name FROM projects WHERE pid = ".$value['p_pid']);
+   		foreach ($result1 as $key => $value) {
+   			$pname = $value['p_name'];
+   			echo $pname;
+   		}
+   }
