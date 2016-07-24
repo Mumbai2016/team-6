@@ -29,6 +29,7 @@ include '../connect.php';?>
     <!-- Custom Theme Style -->
     <link href="../UI/build/css/custom.min.css" rel="stylesheet">
 	<style>
+	
 	th, td { padding: 15px; }
 
 /* cellspacing */
@@ -41,6 +42,22 @@ th, td { vertical-align: top; }
 /* align (center) */
 table { margin: 10 auto; }
 </style>
+<script>
+
+function printPage(id) {
+    var html='<html><img src="../raitlogosnip2.jpg" width="200" height="80"/>';
+  //  var html='';
+	html+= document.getElementById(id).innerHTML;
+    html+="</html>";
+    var printWin = window.open('','','left=0,top=0,width=1000,height=1000,toolbar=1,scrollbars=1,status =1');
+    printWin.document.write(html);
+    printWin.document.close();
+    printWin.focus();
+    printWin.print();
+    printWin.close();
+}
+</script>
+
   </head>
 
   <body class="nav-md">
@@ -267,6 +284,7 @@ table { margin: 10 auto; }
 			
 			?>
           <div class="row">
+		  <div  id='printing' style="width:100%">
 			<div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
 				<div class="x_content">
@@ -311,7 +329,7 @@ table { margin: 10 auto; }
                       <div class="form-group">
                         <center>
                           
-                         <a href="printpdf.php"> <button type="submit" class="btn btn-success">Generate PDF</button></a>
+                         
                       </div>
 
                     </form>
@@ -324,11 +342,12 @@ table { margin: 10 auto; }
               
               </div>
             </div>
+			<center><input type="button" class="btn btn-danger" value="Print Cover letter"  onClick='printPage("printing");' ></input></center>
 
 
           
 
-
+		</div>
         
       </div>
     </div>
