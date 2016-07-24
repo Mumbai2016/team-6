@@ -18,18 +18,17 @@ if(isset($_POST['submit'])) {
 //echo $sql;
 		//print_r($result);
 		if($result->num_rows > 0){
-
+			session_start();
 			while ($row = $result->fetch_assoc()) {
 				# code...
 				$usertype = $row["u_type"];
 				$userid = $row["userid"];
 				//print_r($row);
 				echo "usertype  ".$usertype;
+				$_SESSION['userid']= $row['uid'];
 				if ($usertype == 1){
 				echo '1';
 					$_SESSION['user_type'] = $usertype;
-                    $userid = $row["userid"];
-                    $_SESSION['userid'] = $userid;
 					header("location:./PM/index.php");
 				}else if($usertype == 2){
 					echo '2';
