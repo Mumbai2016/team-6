@@ -28,18 +28,25 @@
 			while ($row = $result->fetch_assoc()) {
 				# code...
 				$usertype = $row["u_type"];
+				$userid = $row["userid"];
 				//print_r($row);
 				echo "usertype  ".$usertype;
 				if ($usertype == 1){
 				echo '1';
 					$_SESSION['user_type'] = $usertype;
-					header("location:./UI/ui/index_1.php");
+                    $userid = $row["userid"];
+                    $_SESSION['userid'] = $userid;
+					header("location:./UI/ui/index.php");
 				}else if($usertype == 2){
 					echo '2';
 					$_SESSION['user_type'] = $usertype;
+                    $userid = $row["userid"];
+                    $_SESSION['userid'] = $userid;
 					header("location:./UI/ui/index_2.php");
 				}else if ($usertype == 0){
 						echo '0';
+                    $userid = $row["userid"];
+                    $_SESSION['userid'] = $userid;
 					$_SESSION['user_type'] = $usertype;
 					header("location:./UI/ui/index_0.php");
 				}
