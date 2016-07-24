@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>USERNAME | </title>
-
-    <!-- Bootstrap -->
+	<!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -24,11 +23,13 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+	
   </head>
 
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
+	   <img src="atma.jpg" align="right" width="300px" height="300px" ><!--S.Sen-->
       <?php 
         for($i =0 ;$i <5; $i++){
           echo "<br>";
