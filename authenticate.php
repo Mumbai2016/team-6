@@ -30,7 +30,7 @@ if(isset($_POST['submit'])) {
 					$_SESSION['user_type'] = $usertype;
                     $userid = $row["userid"];
                     $_SESSION['userid'] = $userid;
-					header("location:./UI/ui/index.php");
+					header("location:./PM/index.php");
 				}else if($usertype == 2){
 					echo '2';
 					$_SESSION['user_type'] = $usertype;
