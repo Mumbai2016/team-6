@@ -1,94 +1,41 @@
-<?php include '..\connect.php';?>
+<?php 
+	include '../connect_k.php';
 
-<link rel="stylesheet" href="../utils/css/bootstrap.css">
-
-
-<!-- Latest compiled JavaScript -->
-<link rel="stylesheet" href="../utils/js/bootstrap.min.js">
+	
 
 
-<h1> PM INSERT FORM </h1>
-<select>
-<?php
-	$sql_get_paid='select * from priority_areas';
-	$result=mysql_query($sql_get_paid);
-	while ($row=mysql_fetch_array($result))
-	{
-		echo '<option value="'.$row[0].'">'.$row[1].'</option>';
+
+	if(isset($_POST)  && !empty($_POST)){
+		print_r($_POST);
+		extract($_POST);
 		
-	}
-?>
-</select>
+		// insert strategy into strategy
+		// get sid and put in activity
+		$strategy = $p_a;
+		$paid = 1;
+		$ngo_id=1;
+		$sql1 = "INSERT INTO `strategy_category`(`sid`, `sname`) VALUES (NULL,'$strategy')";
+		$ret = $cxn->query($sql1);
+		print_r($ret);
+		if ($ret) {
+			# code...
+			$insert_idx = $cxn->insert_id;
+			print_r($insert_idx);
+			$sql2 = "INSERT INTO `activity`(`aid`, `a_paid`, `a_sid`, `a_name`, `a_funds`) VALUES (NULL,'$paid','$insert_idx','$AA_0_activity_0','$AA_0_activity_0_number')";
+			$r_ret= $cxn->query($sql2);
+			$aidx = $cxn->insert_id;
+			$sql3 = "INSERT INTO `projects`(`pid`, `aid`, `ngo_id`, `p_name`, `target_s_date`, `target_e_date`, `s_date`, `e_date`, `status`, `odid`) VALUES (NULL,'$aidx','$ngo_id','$AA__project_0_projectname','$AA__project_0projectDATESTART','$AA__project_0projectDATEEND',NULL,NULL,'not_started',$AA__project_0_projectOD)";
+			echo $sql3;
+			$r3_ret = $cxn->query($sql3);
+			if($r3_ret){
+				header('location:./');
+			}
 
-<select>
-<?php
-	$sql_get_sid='select * from strategy_category';
-	$result=mysql_query($sql_get_sid);
-	while ($row=mysql_fetch_array($result))
-	{
-		echo '<option value="'.$row[0].'">'.$row[1].'</option>';
+		}
+
 		
+	}else{
+		echo "no post";
 	}
-?>
-</select>
-<input name="activityname1" placeholder="Enter Activity Name">
 
-<div class="container">
-  <h2></h2>
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-</div>
-
-<br>
-
-
-<select>
-<?php
-	$sql_get_paid='select * from priority_areas';
-	$result=mysql_query($sql_get_paid);
-	while ($row=mysql_fetch_array($result))
-	{
-		echo '<option value="'.$row[0].'">'.$row[1].'</option>';
-		
-	}
-?>
-</select>
-
-<select>
-<?php
-	$sql_get_sid='select * from strategy_category';
-	$result=mysql_query($sql_get_sid);
-	while ($row=mysql_fetch_array($result))
-	{
-		echo '<option value="'.$row[0].'">'.$row[1].'</option>';
-		
-	}
-?>
-</select>
-
-<input name="activityname2" placeholder="Enter Activity Name">
-<button name="button2">Add Projects</button>
-<br>
-<button name="button_1">Add Activities</button>
+ ?>

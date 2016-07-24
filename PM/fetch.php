@@ -1,16 +1,35 @@
 <?php 
-	// this file contains all functions for all sorts of ajax requests
-	// please write the function name appropriately
-	
-	$functionName = filter_input(INPUT_POST, "functionName");
-	if($functionName == "returnActivityDetails"){
-		returnActivityDetails();
-	}
-	function returnActivityDetails(){
-		$arr = array('a'=>'5','b'=>'2');
-		echo json_encode($arr);
+
+	// this file is only for authentivction purposes
+	// 
+	// 
+	// 
+	// 
+	if (isset($_POST)) {
+		# code...
+		extract($_POST);
+		print_r($_POST);
+		include '../connect_k.php';
+		$x = 1;
+		$sql = "SELECT * FROM `p_vol` WHERE `p_uid`=$x";
+		$result = $cxn->query($sql);
+		echo $sql;
+		print_r($result);
+		if($result->num_rows > 0){
+
+			while ($row = $result->fetch_assoc()) {
+				# code...
+				$usertype = $row["p_uid"];
+				print_r($row);
+				
+			}
+		}else{
+			echo "problem";
+		}
+		$cxn->close();
+		header('location:./');
+
+		
 	}
 
-	
-	
  ?>
