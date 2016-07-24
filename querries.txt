@@ -40,3 +40,28 @@ update hours for the volunteer:
 		mysqli_query($conn,"Update p_vol set weeks=".$new_weeks." where p_uid=".$userid." and p_pid=".$projid);
 		echo "updated";
 	}
+
+count of completed projects ngo-wise for a specific pm:
+
+   $result= mysqli_query($conn,"SELECT ngo_id FROM ngo where pm_id=".$pm_id);//$pm_id is uid of a pm
+
+   foreach ($result as $key => $value) {
+   		$result1 = mysqli_query($conn,"select count(*) from projects where status like '%complete%' and ngo_id =".$value['ngo_id']);
+   		foreach ($result1 as $key => $value) {
+   			$count += $value['count(*)'];
+   			echo $count;
+   		}
+   		$count = 0;
+   }
+
+list of projects worked on by volunteers:
+
+  $result= mysqli_query($conn,"SELECT p_pid FROM p_vol WHERE p_uid =".$uid);//$pm_id is uid of a volunteer
+
+   foreach ($result as $key => $value) {
+   		$result1 = mysqli_query($conn,"SELECT p_name FROM projects WHERE pid = ".$value['p_pid']);
+   		foreach ($result1 as $key => $value) {
+   			$pname = $value['p_name'];
+   			echo $pname;
+   		}
+   }

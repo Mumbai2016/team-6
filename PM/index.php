@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<?php
-
-session_start();
- include '../connect.php';?>
+<?php include '../connect.php';?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,10 +27,6 @@ session_start();
     <link href="../UI/build/css/custom.min.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script type="text/javascript">
-      $('#myModal').modal();
-
-    </script>
 
     <script type="text/javascript" src="add_hours.js"></script>
   </head>
@@ -78,7 +71,7 @@ session_start();
                     
                   </li>
                   <!-- Button trigger modal -->
-                  <li><a href='#' data-toggle='modal' data-target='#myModal1'><i class="fa fa-clock-o"></i> Update Hours </span></a>
+                  <li><a href='#' data-toggle='modal' data-target='#myModal'><i class="fa fa-clock-o"></i> Update Hours </span></a>
                     
                   </li>
 				  <li><a><i class="fa fa-book"></i> Reports <span class="fa fa-chevron-down"></span></a>
@@ -217,27 +210,27 @@ session_start();
           <!-- top tiles -->
           <div class="row tile_count">
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Volunteers</span>
+              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
               <div class="count">2500</div>
               <span class="count_bottom"><i class="green">4% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Average Weekly hours</span>
+              <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
               <div class="count">123.50</div>
               <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Partners</span>
+              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
               <div class="count green">2,500</div>
               <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total NGO's</span>
+              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
               <div class="count">4,567</div>
               <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Funds</span>
+              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
               <div class="count">2,315</div>
               <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
             </div>
@@ -298,7 +291,7 @@ session_start();
                       <td>
                         <table class="tile_info">
 						<?php
-							$sql_array="SELECT * from projects where ngo_id in (SELECT ngo_id FROM ngo where pm_id=1 )";
+							$sql_array="SELECT * from projects where ngo_id in (SELECT ngo_id FROM ngo where pm_id=6 )";
 							$results=mysql_query($sql_array);
 							$status=array(0,0,0);
 							while($row=mysql_fetch_array($results))
@@ -354,6 +347,11 @@ session_start();
                   <div class="clearfix"></div>
                 </div>
                 
+                  
+                   
+
+                    
+                      
                       <canvas width="370" height="200" id="foo" class=""></canvas>
                       <div class="goal-wrapper">
                         <?php
@@ -374,115 +372,13 @@ session_start();
               </div>
             </div>
 
-
           </div>
-    
-    
-      <!-- </div> -->
-      <br>
-      <?php mysql_close($connect); ?>
 
 
-      <div id="analyse">
-          <?php 
-            $x = 1; 
-            $count = 0;
-            include '../connect_k.php';
-            $q = "SELECT `p_pid`, `ngo_id` FROM  `p_vol` WHERE `p_uid`='$x'";
-            $ret = $cxn->query($q);
-            if($ret->num_rows > 0){
-              while($row = $ret->fetch_assoc()){
-                $ppid = $row['p_pid'];
-                $ngo_id = $row['ngo_id'];
-                $q1 = "SELECT `ngo_name` FROM `ngo` WHERE `ngo_id`=$ngo_id";
-                $retngo = $cxn->query($q1);
-                // echo $q1;
-                if($retngo->num_rows > 0){
-                    while($rx = $retngo->fetch_assoc()){
-                      // print_r($rx);
-                      $q3 = "SELECT * FROM `projects` WHERE `ngo_id`=$ngo_id and `pid`=$ppid";
-                      $r3 = $cxn->query($q3);
-                      if($r3->num_rows > 0){
-                        while($row = $r3->fetch_assoc()){
-
-                            echo "<div id='ngo_".$ngo_id."'>";
-                              // print_r($row);
-                            echo "<a class='form-control' href='#' data-toggle='modal' data-target='#myModal'>".$rx['ngo_name']." : ".$row['p_name']."</a>";
-                            echo "</div>";
-                          
-                        }
-                      }
-
-                  }
-                }
-
-
-              }
-            }
-            ///////////////////////////////////////////////////////////////
-            $count_completed=0;$count_aborted=0;$count_on=0;
-            $q = "SELECT `ngo_id` FROM `ngo` WHERE `pm_id`=".$x;
-            $result = $cxn->query($q);
-             foreach ($result as $key => $value) {
-              // echo 'here';
-             # code...
-              // $count = 0;
-               $result1 = $cxn->query("select count(*) from projects where status like '%complete%' and ngo_id =".$value['ngo_id']);
-                foreach ($result1 as $key => $value) {
-                  $count_completed += $value['count(*)'];
-                  // echo $count;
-                }
-               }
-//////////////////////////////////////////////////////////
-            $q = "SELECT `ngo_id` FROM `ngo` WHERE `pm_id`=".$x;
-            $result = $cxn->query($q);
-             foreach ($result as $key => $value) {
-              // echo 'here';
-             # code...
-              // $count = 0;
-               $result1 = $cxn->query("select count(*) from projects where status like '%ongoing%' and ngo_id =".$value['ngo_id']);
-                foreach ($result1 as $key => $value) {
-                  $count_on += $value['count(*)'];
-                  // echo $count;
-                }
-               }
-
-///////////////////////////////////////////////////////////////////////
-            $q = "SELECT `ngo_id` FROM `ngo` WHERE `pm_id`=".$x;
-            $result = $cxn->query($q);
-             foreach ($result as $key => $value) {
-              // echo 'here';
-             # code...
-              // $count = 0;
-               $result1 = $cxn->query("select count(*) from projects where status like '%complete%' and ngo_id =".$value['ngo_id']);
-                foreach ($result1 as $key => $value) {
-                  $count_aborted += $value['count(*)'];
-                  // echo $count;
-                }
-               }
-
-            // mysqli_close($cxn);
-           ?>
+        
       </div>
-
-      </div>
-
-    
-    </div>
     </div>
 
-    <?php 
-
-             for($i=0;$i<5;$i++){
-              echo "<br></br>";
-             }
-
-         ?>
-
-
-
-
-  <br><br>
     <!-- jQuery -->
     <script src="../UI/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -605,50 +501,18 @@ session_start();
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Summary</h4>
+        <h4 class="modal-title" id="myModalLabel">Up your Hours</h4>
       </div>
-
       <div class="modal-body">
-
-        <h4>Count of completed projects for PM : <?php echo $count_completed; ?></h4>
-        <h4>Count of aborted projects for PM : <?php echo $count_aborted; ?></h4>
-        <h4>Count of on going projects for PM : <?php echo $count_on; ?></h4>
-
-     
-      </div>
-      <div class="modal-footer">
-        
-      
-        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-        <!-- <button type="button" class="btn btn-default">Save changes</button> -->
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Update Hours</h4>
-      </div>
-
-      <div class="modal-body">
-        <form action="#" id="mymodalform">
-            <input type="number" name="update_hr" ></input>
-            <input type="submit" name="submit" ></input>
-            <input type="hidden" name="pu_id" ><?php $_SESSION['user_type'] ?></input>
-
+        <form id="modelform" action="fetch.php" method="POST">
+          <div class='form-group'>
+            <!-- <p>Enter input hours</p> -->
+            <input class='form-control' name="added_hours"  type="number" placeholder="Enter input hours" ></input>
+          </div>
+          <input class="form-control btn btn-default" type="submit"></input>
         </form>
-
-     
       </div>
       <div class="modal-footer">
-        
-      
         <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
         <!-- <button type="button" class="btn btn-default">Save changes</button> -->
       </div>
@@ -657,6 +521,5 @@ session_start();
 </div>
 
 
-
-</body>
+  </body>
 </html>

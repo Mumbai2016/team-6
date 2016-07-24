@@ -1,8 +1,8 @@
 <?php
 
-	$hostname="127.0.0.1";
+	$hostname="localhost";
 	$username="root"; //username for database
-	$password="root"; //database password
+	$password=""; //database password
 	$dbname="atma6"; //database name
 	
 	@$connect = mysql_connect($hostname,$username,$password) or die("Error Connecting"); //make connection
