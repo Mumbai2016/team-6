@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<?php include '../connect.php';?>
+<?php
+session_start();
+
+include '../connect.php';?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -220,6 +223,7 @@ table { margin: 10 auto; }
 			<?php
 			//take details of the volunteer from his volunteerid
 			$volunteer_id=$_POST['volunteerid'];
+			$_SESSION['volunteerid']=$volunteer_id;
 			//echo $volunteer_id;
 			$sql_getname="select * from user where uid='$volunteer_id'";
 			$resname=mysql_query($sql_getname);
@@ -232,8 +236,11 @@ table { margin: 10 auto; }
 			while($row=mysql_fetch_array($resname))
 			{
 				$volunteer_hours=$row['hours'];
+				$_SESSION['hours']=$volunteer_hours;
 				$volunteer_weeks=$row['weeks'];
+				$_SESSION['weeks']=$volunteer_hours;
 				$volunteer_p_pid=$row['p_pid'];
+				$_SESSION['p_pid']=$volunteer_p_pid;
 			
 			}
 			$sql_uid="SELECT * FROM `projects` WHERE pid in (select p_pid from p_vol where p_uid=$volunteer_id)";
@@ -304,8 +311,7 @@ table { margin: 10 auto; }
                       <div class="form-group">
                         <center>
                           
-                          <button type="submit" class="btn btn-success">Done</button>
-                        </center>
+                         <a href="printpdf.php"> <button type="submit" class="btn btn-success">Generate PDF</button></a>
                       </div>
 
                     </form>
