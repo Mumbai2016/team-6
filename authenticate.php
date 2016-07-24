@@ -9,8 +9,14 @@
 		# code...
 		extract($_POST);
 		print_r($_POST);
+
 		include 'connect_k.php';
-		$sql = "SELECT * FROM `user` WHERE `uname`='$username' and `u_pwd` = '$password'";
+        
+        $username= mysqli_real_escape_string($cxn,$username);
+        $password= mysqli_real_escape_string($cxn,$password);
+        $type= $ddl;
+		$sql = "SELECT * FROM `user` WHERE `uname`='$username' and `u_pwd` = '$password' and u_type=$type" ;
+
 		$result = $cxn->query($sql);
 		echo $sql;
 		print_r($result);
