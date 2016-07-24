@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?php include '../connect.php';?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,23 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>USERNAME | </title>
+    <title>USERNAME1 | </title>
 
     <!-- Bootstrap -->
-    <link href="../UI/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../ui/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../UI/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../ui/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../UI/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../ui/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../UI/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- bootstrap-progressbar -->
-    <link href="../UI/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="../UI/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="../ui/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="../ui/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="../ui/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="../ui/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="../ui/vendors/starrr/dist/starrr.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../UI/build/css/custom.min.css" rel="stylesheet">
+    <link href="../ui/build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -33,7 +36,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>USERNAME!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -45,7 +48,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>USERNAME1</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -53,26 +56,17 @@
             <br />
 
             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="index.php"><i class="fa fa-home"></i> Home </span></a>
+                  <li><a><i class="fa fa-home"></i> Home </span></a>
                     
                   </li>
                   <li><a href="insert_activities.php"><i class="fa fa-edit"></i> PM INSERT </span></a>
                     
                   </li>
                   <li><a><i class="fa fa-desktop"></i> Survey </span></a>
-                    
-                  </li>
-				  <li><a><i class="fa fa-book"></i> Reports <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="volunteer_reports.php">For Volunteers</a></li>
-                      
-                    </ul>
-                  </li>
-				  <li><a><i class="fa fa-book"></i> Volunteer Application Status <span class="fa fa-chevron-down"></span></a>
                     
                   </li>
                   
@@ -114,7 +108,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">John Doe
+                    <img src="images/img.jpg" alt="">Username
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -202,40 +196,90 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-          <!-- top tiles -->
-          
-          <!-- /top tiles -->
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Form Elements</h3>
+              </div>
 
-          <br />
-			
-          <div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-				<div class="x_content">
+                  <div class="x_title">
+                    <h2>Form Design <small>different form elements</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
                     <br />
-					<center><h1> Volunteer</h1></center>
-					</br>
-                    <form id="volunteer-report-form" data-parsley-validate class="form-horizontal form-label-left" action="volunteer_generate.php" method="POST">
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="volunteer-id">Select Volunteer <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                         <select class="form-control" name="volunteerid">
-						 <?php 
-						 $sql_volunteers="select * from user where u_type=2";
-						 $result=mysql_query($sql_volunteers);
-						 while($row=mysql_fetch_array($result))
-						 {
-							 echo '<option value="'.$row['uid'].'">'.$row['uname'].'</option>';
-						 }
-						 
-						?> 
-							
-							</select>
+                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
-                      
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <div id="gender" class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
+                            </label>
+                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="gender" value="female"> Female
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                        </div>
+                      </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -246,68 +290,70 @@
 
                     </form>
                   </div>
-				  </div>
-
-
-            
-            
-              
+                </div>
               </div>
             </div>
+            </div>
+
+            
+
+            
 
 
-          
+            
+          </div>
+        </div>
+        <!-- /page content -->
 
-
-        
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
       </div>
     </div>
 
     <!-- jQuery -->
-    <script src="../UI/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../ui/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="../UI/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../ui/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../UI/vendors/fastclick/lib/fastclick.js"></script>
+    <script src="../ui/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../UI/vendors/nprogress/nprogress.js"></script>
-    <!-- Chart.js -->
-    <script src="../UI/vendors/Chart.js/dist/Chart.min.js"></script>
-    <!-- gauge.js -->
-    <script src="../UI/vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="../ui/vendors/nprogress/nprogress.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../UI/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="../ui/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../UI/vendors/iCheck/icheck.min.js"></script>
-    <!-- Skycons -->
-    <script src="../UI/vendors/skycons/skycons.js"></script>
-    <!-- Flot -->
-    <script src="../UI/vendors/Flot/jquery.flot.js"></script>
-    <script src="../UI/vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../UI/vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../UI/vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../UI/vendors/Flot/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    <script src="../UI/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../UI/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../UI/vendors/flot.curvedlines/curvedLines.js"></script>
-    <!-- DateJS -->
-    <script src="../UI/vendors/DateJS/build/date.js"></script>
-    <!-- JQVMap -->
-    <script src="../UI/vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../UI/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../UI/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="../ui/vendors/iCheck/icheck.min.js"></script>
     <!-- bootstrap-daterangepicker -->
     <script src="js/moment/moment.min.js"></script>
     <script src="js/datepicker/daterangepicker.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="../ui/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="../ui/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="../ui/vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="../ui/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="../ui/vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="../ui/vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="../ui/vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="../ui/vendors/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    <script src="../ui/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <!-- starrr -->
+    <script src="../ui/vendors/starrr/dist/starrr.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../UI/build/js/custom.min.js"></script>
+    <script src="../ui/build/js/custom.min.js"></script>
 
-   
-
-   
-   
+    <!-- bootstrap-daterangepicker -->
     
   </body>
 </html>
