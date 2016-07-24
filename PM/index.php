@@ -291,7 +291,7 @@
                       <td>
                         <table class="tile_info">
 						<?php
-							$sql_array="SELECT * from projects where ngo_id in (SELECT ngo_id FROM ngo where pm_id=6 )";
+							$sql_array="SELECT * from projects where ngo_id in (SELECT ngo_id FROM ngo where pm_id=1 )";
 							$results=mysql_query($sql_array);
 							$status=array(0,0,0);
 							while($row=mysql_fetch_array($results))
