@@ -24,6 +24,7 @@
 //echo $sql;
 		//print_r($result);
 		if($result->num_rows > 0){
+			session_start();
 
 			while ($row = $result->fetch_assoc()) {
 				# code...
@@ -33,7 +34,7 @@
 				if ($usertype == 1){
 				echo '1';
 					$_SESSION['user_type'] = $usertype;
-					header("location:./UI/ui/index_1.php");
+					header("location:./PM/index.php");
 				}else if($usertype == 2){
 					echo '2';
 					$_SESSION['user_type'] = $usertype;

@@ -1,21 +1,16 @@
-// $(document).ready(function(){
-// 	$('#myModal').on('shown.bs.modal', function () {
-//   $('#myInput').focus()
-// });
-
-// 	$("#modelform").submit(function(e){
-// 		$.ajax({
-// 			type:"POST",
-// 			url:'fetch.php',
-// 			data:"functionName=updatePMHours",
-// 		success:function(e){
-// 			console.log(e);
-// 		},
-// 		error:function(e){
-// 			console.log(e);
-// 		},
-// 		});
-// 		e.preventDefault();
-// 	});
-
-// });
+$(document).ready(function(){
+	$("#mymodalform").submit(function(e){
+		$.ajax({
+			url:'newfetch.php',
+			type:'POST',
+			data:$("#mymodalform").serialize(),
+			success:function(res){
+				console.log(res);
+			},
+			error:function(err){
+				console.log(err);
+			},
+		});
+		e.preventDefault();
+	});
+});
